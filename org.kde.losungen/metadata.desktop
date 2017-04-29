@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Losungen
-Icon=stickynotes
-Comment=Biblische Losungen
+Name=Die Losungen
+Icon=biblencross.svg
+Comment=Biblische Losungen für jeden Tag
 Type=Service
 X-KDE-ParentApp=
 X-KDE-PluginInfo-Author=Thomas Mitterfellner
