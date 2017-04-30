@@ -23,6 +23,7 @@
 
 import QtQuick 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
@@ -30,85 +31,36 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.XmlListModel 2.0 
 import "../code/functions.js" as Fn
 
-Image {
+Rectangle {
     id: root;
+        anchors {
+            fill: parent
+		}
+    Layout.minimumWidth: units.iconSizes.medium
+    Layout.minimumHeight: units.iconSizes.medium
+    Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
+    gradient: Gradient {
+        GradientStop { position: 0 ; color: theme.backgroundColor }
+        GradientStop { position: 1 ; color: theme.buttonBackgroundColor  }
+    }
 
     // default size
     width: 250;
     height: 300;
 
     ColumnLayout {
+        id: column
         anchors {
             fill: parent
+            leftMargin: 5
+            rightMargin: 5
+            topMargin: 5
+            bottomMargin: 5
         }
 
-        spacing: units.gridUnit
-
-        /* day selector */
-        RowLayout {
-            id: daySelector
-            property int buttonSize: 30
-            visible: plasmoid.configuration.showDaySelector;
-
-            Layout.alignment: Qt.AlignHCenter
-            Label {
-                id: dateLabel
-            }
- 
-            /* go to previous day's Losung button */
-            Button {
-                onClicked: losungen.previous()
-                text: " ◂ "; // placeholder to give some size
-                style: ButtonStyle {
-                    background: Rectangle {
-                       implicitWidth: daySelector.buttonSize
-                       implicitHeight: daySelector.buttonSize
-                       border.width: control.activeFocus ? 2 : 1
-                       border.color: "#888"
-                       radius: 4
-                       gradient: Gradient {
-                           GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                           GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                       }
-                    }
-                }
-            }
-            /* go to today's Losung button */
-            Button {
-                onClicked: losungen.today()
-                text: " = ";
-                style: ButtonStyle {
-                    background: Rectangle {
-                       implicitWidth: daySelector.buttonSize
-                       implicitHeight: daySelector.buttonSize
-                       border.width: control.activeFocus ? 2 : 1
-                       border.color: "#888"
-                       radius: 4
-                       gradient: Gradient {
-                           GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                           GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                       }
-                    }
-                }
-            }
-            /* go to next day's Losung button */
-            Button {
-                onClicked: losungen.next()
-                text: " ▸ ";
-                style: ButtonStyle {
-                    background: Rectangle {
-                       implicitWidth: daySelector.buttonSize
-                       implicitHeight: daySelector.buttonSize
-                       border.width: control.activeFocus ? 2 : 1
-                       border.color: "#888"
-                       radius: 4
-                       gradient: Gradient {
-                           GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                           GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                       }
-                    }
-                }
-            }
+        //spacing: units.gridUnit
+        Label {
+            id: dateLabel
         }
 
         /* Losung text area */
@@ -116,6 +68,7 @@ Image {
             id: losungsText;
 
             Layout.fillHeight: true
+            Layout.fillWidth: true
 
             // get font and text color from user settings
             font: plasmoid.configuration.textFont;
@@ -133,6 +86,37 @@ Image {
                 (activeFocus ? Qt.ScrollBarAsNeeded : Qt.ScrollBarAlwaysOff);
 
         }
+        /* day selector */
+        ToolBar {
+            id: daySelector
+            visible: plasmoid.configuration.showDaySelector;
+            Layout.fillWidth: true
+            Layout.minimumWidth: 100
+            RowLayout {
+                anchors.fill: parent
+ 
+                /* go to previous day's Losung button */
+                PlasmaComponents.ToolButton {
+                    onClicked: losungen.previous()
+                    iconSource: "arrow-left"
+                    //text: " ◂ ";
+                    anchors { left: parent.left }
+                }
+                /* go to today's Losung button */
+                PlasmaComponents.ToolButton {
+                    onClicked: losungen.today()
+                    iconSource: "go-jump-today"
+                    anchors { horizontalCenter: parent.horizontalCenter }
+                }
+                /* go to next day's Losung button */
+                PlasmaComponents.ToolButton {
+                    onClicked: losungen.next()
+                    iconSource: "arrow-right"
+                    anchors { right: parent.right }
+                }
+            }
+        }
+
     }
 
     /* initialize the plasmoid with the current day's Losung */
