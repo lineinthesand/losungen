@@ -29,6 +29,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.plasmoid 2.0
 
 Item {
     id: generalPage;
@@ -41,6 +42,7 @@ Item {
     property alias cfg_backgroundColor2: backgroundColor2Dialog.color;
     property alias cfg_textFont: textFontDialog.font;
     property alias cfg_showDaySelector: showDaySelector.checked;
+    property alias cfg_bibleServerURL: bibleServerURL.text;
 
     ColumnLayout {
         /* text color */
@@ -151,6 +153,20 @@ Item {
                 title: qsTr("Select font");
                 visible: false;
             }
+        }
+        RowLayout {
+            PlasmaComponents.Label {
+                text: qsTr("Bibleserver search URL") + ": ";
+            }
+
+            /* button to show/hide color picker */
+            TextInput {
+                id: bibleServerURL
+            }
+            //Button {
+            //    text: "Default"
+            //    onClicked: bibleServerURL.text = plasmoid.configuration.bibleServerURL.default
+            //}
         }
 
         /* day selector check box */

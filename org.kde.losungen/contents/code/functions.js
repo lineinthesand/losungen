@@ -22,12 +22,17 @@ function getDaysInYear(){
 /* Create a rich text formatted string of the losung object passed */
 function formatLosung(losung_) {
     var text = "<p>" + markdown(losung_.ot_text) + "</p>" 
-             + "<p align=right style=\"margin-right: 1em\">" + losung_.ot_verse + "</p>"
+             + "<p align=right style=\"margin-right: 1em\">" + bibleserver_link(losung_.ot_verse) + "</p>"
              + "<p>" + markdown(losung_.nt_text) + "</p>"
-             + "<p align=right style=\"margin-right: 1em\">" + losung_.nt_verse + "</p>";
+             + "<p align=right style=\"margin-right: 1em\">" + bibleserver_link(losung_.nt_verse) + "</p>";
     return text;
 }
 
+function bibleserver_link(verse) {
+    var bibleserver = plasmoid.configuration.bibleServerURL;
+    var link = "<a href=\"" + bibleserver + verse + "\">" + verse + "</a>"; 
+    return link;
+}
 
 function markdown(input_string) {
     var it_re = new RegExp(/\/(.*)\/(.*)/);

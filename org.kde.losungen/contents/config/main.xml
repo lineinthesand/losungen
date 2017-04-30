@@ -3,7 +3,7 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
-    <kcfgfile name=""/>
+    <kcfgfile />
 
     <group name="General">
         <!-- color for the paper -->
@@ -32,6 +32,10 @@
         <entry name="backgroundColor2" type="String">
           <default></default>
         </entry>
+        <entry name="bibleServerURL" type="String">
+          <default>https://www.bibleserver.com/text/LUT/</default>
+        </entry>
+
 
     </group>
 

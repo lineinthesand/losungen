@@ -85,6 +85,7 @@ Rectangle {
             verticalScrollBarPolicy:
                 (activeFocus ? Qt.ScrollBarAsNeeded : Qt.ScrollBarAlwaysOff);
 
+            onLinkActivated: Qt.openUrlExternally(link)
         }
         /* day selector */
         ToolBar {
@@ -199,7 +200,7 @@ Rectangle {
             this.currentDay = Fn.getDOY(date) - 1;
             setLosung(this.currentDay);
         }
-        Component.onCompleted: init()
+        Component.onCompleted: { plasmoid.addEventListener('ConfigChanged', init); init();}
         onCountChanged: init()
     }
 }
