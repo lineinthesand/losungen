@@ -40,8 +40,8 @@ Rectangle {
     Layout.minimumHeight: units.iconSizes.medium
     Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
     gradient: Gradient {
-        GradientStop { position: 0 ; color: theme.backgroundColor }
-        GradientStop { position: 1 ; color: theme.buttonBackgroundColor  }
+        GradientStop { position: 0 ; color: plasmoid.configuration.backgroundColor1  }
+        GradientStop { position: 1 ; color: plasmoid.configuration.backgroundColor2  }
     }
 
     // default size
@@ -121,6 +121,11 @@ Rectangle {
 
     /* initialize the plasmoid with the current day's Losung */
     function init() {
+        var conf = plasmoid.configuration;
+        if (conf.backgroundColor1 == "") conf.backgroundColor1 = theme.backgroundColor;
+        if (conf.backgroundColor2 == "") conf.backgroundColor2 = theme.backgroundColor;
+        if (conf.textFont == "") conf.textFont = theme.defaultFont;
+        if (conf.textColor == "") conf.textColor = theme.textColor;
         losungen.today()
     }
 
@@ -142,10 +147,10 @@ Rectangle {
             losungsText.text = text;
         } else {
             
-            losungsText.text = i18n("Data file ") + losungen.dataFileName 
-                             + i18n(" not found. You can a get it from ")
+            losungsText.text = qsTr("Data file ") + losungen.dataFileName 
+                             + qsTr(" not found. You can a get it from ")
                              + "<a href=\"http://www.losungen.de/download/\">http://www.losungen.de/download/</a>."
-                             + i18n("Download the Losungen XML zip, unzip the contained xml file to the installation directory's data folder, e.g.: ")
+                             + qsTr("Download the Losungen XML zip, unzip the contained xml file to the installation directory's data folder, e.g.: ")
                              + "~/.local/share/plasma/plasmoids/org.kde.losungen/contents/data";
         }
     }

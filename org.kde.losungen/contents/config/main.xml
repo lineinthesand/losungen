@@ -13,16 +13,24 @@
 
         <!-- font for the text -->
         <entry name="textFont" type="String">
-          <default>Oxygen-Sans,10,-1,5,50,0,0,0,0,0</default>
+          <default></default>
         </entry>
 
         <!-- color for the text -->
         <entry name="textColor" type="String">
-          <default>#000000</default>
+          <default></default>
         </entry>
 
         <entry name="showDaySelector" type="Bool">
           <default>true</default>
+        </entry>
+        <!-- color1 for the background gradient -->
+        <entry name="backgroundColor1" type="String">
+          <default></default>
+        </entry>
+        <!-- color2 for the background gradient -->
+        <entry name="backgroundColor2" type="String">
+          <default></default>
         </entry>
 
     </group>

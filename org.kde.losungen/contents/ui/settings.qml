@@ -27,6 +27,7 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
 Item {
@@ -36,6 +37,8 @@ Item {
     height: childrenRect.height;
 
     property alias cfg_textColor: textColorDialog.color;
+    property alias cfg_backgroundColor1: backgroundColor1Dialog.color;
+    property alias cfg_backgroundColor2: backgroundColor2Dialog.color;
     property alias cfg_textFont: textFontDialog.font;
     property alias cfg_showDaySelector: showDaySelector.checked;
 
@@ -43,7 +46,7 @@ Item {
         /* text color */
         RowLayout {
             PlasmaComponents.Label {
-                text: i18n("Text color") + ": ";
+                text: qsTr("Text color") + ": ";
             }
 
             /* button to show/hide color picker */
@@ -63,7 +66,60 @@ Item {
             ColorDialog {
                 id: textColorDialog;
 
-                title: i18n("Select text color");
+                title: qsTr("Select text color");
+                visible: false;
+            }
+        }
+        /* background color 1 */
+        RowLayout {
+            PlasmaComponents.Label {
+                text: qsTr("Background color 1") + ": ";
+            }
+
+            /* button to show/hide color picker */
+            Button {
+                onClicked: backgroundColor1Dialog.visible = !backgroundColor1Dialog.visible;
+
+                text: "      "; // placeholder to give some size
+                style: ButtonStyle {
+                    background: Rectangle {
+                        /* provide a sample of the current color */
+                       color: cfg_backgroundColor1;
+                    }
+                }
+            }
+
+            /* color picker */
+            ColorDialog {
+                id: backgroundColor1Dialog;
+                title: qsTr("Select background color 1");
+                visible: false;
+            }
+        }
+        /* background color 2 */
+        RowLayout {
+            PlasmaComponents.Label {
+                text: qsTr("Background color 2") + ": ";
+            }
+
+            /* button to show/hide color picker */
+            Button {
+                onClicked: backgroundColor2Dialog.visible = !backgroundColor2Dialog.visible;
+
+                text: "      "; // placeholder to give some size
+                style: ButtonStyle {
+                    background: Rectangle {
+                        /* provide a sample of the current color */
+                        color: cfg_backgroundColor2;
+                    }
+                }
+            }
+
+            /* color picker */
+            ColorDialog {
+                id: backgroundColor2Dialog;
+
+                title: qsTr("Select background color 2");
                 visible: false;
             }
         }
@@ -71,7 +127,7 @@ Item {
         /* text font */
         RowLayout {
             PlasmaComponents.Label {
-                text: i18n("Font") + ": ";
+                text: qsTr("Font") + ": ";
             }
 
             /* button to show/hide font picker */
@@ -92,10 +148,11 @@ Item {
             FontDialog {
                 id: textFontDialog;
 
-                title: i18n("Select font");
+                title: qsTr("Select font");
                 visible: false;
             }
         }
+
         /* day selector check box */
         RowLayout {
             PlasmaComponents.CheckBox {
@@ -103,7 +160,7 @@ Item {
                 checked: cfg_showDaySelector 
             }
             PlasmaComponents.Label {
-                text: i18n("Show date selector");
+                text: qsTr("Show date selector");
             }
 
         }
