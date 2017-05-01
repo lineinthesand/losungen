@@ -1,3 +1,5 @@
+Note: The actual data presented within the plasmoid (i.e. the file "Losungen Free <yyyy>.xml" in the data subfolder) is NOT subject to the GPL license and © Evangelische Brüder-Unität – Herrnhuter Brüdergemeine. Further information can be found here: www.losungen.de
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
@@ -673,5 +675,3 @@ the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <http://www.gnu.org/philosophy/why-not-lgpl.html>.
 
-
-The actual data presented within the plasmoid is not subject to the above license and © Evangelische Brüder-Unität – Herrnhuter Brüdergemeine. Further information can be found here: www.losungen.de
