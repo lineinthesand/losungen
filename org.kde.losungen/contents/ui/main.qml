@@ -26,9 +26,11 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import QtQuick.Controls 1.4
+import QtQuick.Dialogs 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.XmlListModel 2.0 
+import QtQuick.Window 2.2
 import "../code/functions.js" as Fn
 
 Rectangle {
@@ -98,26 +100,44 @@ Rectangle {
  
                 /* go to previous day's Losung button */
                 PlasmaComponents.ToolButton {
+                    id: previousDay
                     onClicked: losungen.previous()
                     iconSource: "arrow-left"
                     //text: " ◂ ";
-                    anchors { left: parent.left }
+                    //anchors { left: parent.left }
+                    //Layout.alignment: Qt.AlignLeft
                 }
                 /* go to today's Losung button */
                 PlasmaComponents.ToolButton {
                     onClicked: losungen.today()
                     iconSource: "go-jump-today"
-                    anchors { horizontalCenter: parent.horizontalCenter }
+                    anchors { right: nextDay.left }
+                    anchors { left: previousDay.right }
+                    Layout.alignment: Qt.AlignCenter
                 }
                 /* go to next day's Losung button */
                 PlasmaComponents.ToolButton {
+                    id: nextDay
                     onClicked: losungen.next()
                     iconSource: "arrow-right"
-                    anchors { right: parent.right }
+                    anchors { right: info.left }
+                }
+                PlasmaComponents.ToolButton {
+                    id: info
+                    onClicked: popup.visible = true
+                    iconSource: "dialog-information"
+                    Layout.alignment: Qt.AlignRight
                 }
             }
         }
 
+    }
+
+    MessageDialog {
+       id: popup
+       text: "<p>Losungstext: © Evangelische Brüder-Unität – Herrnhuter Brüdergemeine: <a href=\"www.herrnhuter.de\">www.herrnhuter.de</a><br />" +
+             "Weitere Informationen finden sie hier: <a href=\"www.losungen.de\">www.losungen.de</a></p>" +
+             "<p>Implementierung des Plasma 5 Widgets: Thomas Mitterfellner <a href=\"mailto:thomas.mitterfellner@gmail.com\">&lt;thomas.mitterfellner@gmail.com&gt;</a></p>"
     }
 
     /* initialize the plasmoid with the current day's Losung */
