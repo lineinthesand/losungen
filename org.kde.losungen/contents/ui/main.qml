@@ -147,7 +147,7 @@ Rectangle {
         if (conf.backgroundColor2 == "") conf.backgroundColor2 = theme.backgroundColor;
         if (conf.textFont == "") conf.textFont = theme.defaultFont;
         if (conf.textColor == "") conf.textColor = theme.textColor;
-        losungen.today()
+        losungen.today();
     }
 
     /* Convert the date string from the xml file to a localized date string */
@@ -170,9 +170,10 @@ Rectangle {
             
             losungsText.text = qsTr("Data file ") + losungen.dataFileName 
                              + qsTr(" not found. You can a get it from ")
-                             + "<a href=\"http://www.losungen.de/download/\">http://www.losungen.de/download/</a>."
+                             + "<a href=\"http://www.losungen.de/download/\">http://www.losungen.de/download/</a>. "
                              + qsTr("Download the Losungen XML zip, unzip the contained xml file to the installation directory's data folder, e.g.: ")
-                             + "~/.local/share/plasma/plasmoids/org.kde.losungen/contents/data";
+                             + "~/.local/share/plasma/plasmoids/org.kde.losungen/contents/data<br/>"
+                             + qsTr("Note that you might need to remove the widget and re-add it, or log out and in again for the new file to be recognized.");
         }
     }
 
@@ -220,7 +221,7 @@ Rectangle {
             this.currentDay = Fn.getDOY(date) - 1;
             setLosung(this.currentDay);
         }
-        Component.onCompleted: { plasmoid.addEventListener('ConfigChanged', init); init();}
+        Component.onCompleted: { init();}
         onCountChanged: init()
     }
 }
