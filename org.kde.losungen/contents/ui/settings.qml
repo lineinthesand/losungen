@@ -60,6 +60,7 @@ Item {
                     background: Rectangle {
                         /* provide a sample of the current color */
                         color: cfg_textColor;
+                        border.width: 1;
                     }
                 }
             }
@@ -86,7 +87,8 @@ Item {
                 style: ButtonStyle {
                     background: Rectangle {
                         /* provide a sample of the current color */
-                       color: cfg_backgroundColor1;
+                        color: cfg_backgroundColor1;
+                        border.width: 1;
                     }
                 }
             }
@@ -113,6 +115,7 @@ Item {
                     background: Rectangle {
                         /* provide a sample of the current color */
                         color: cfg_backgroundColor2;
+                        border.width: 1;
                     }
                 }
             }
@@ -160,14 +163,21 @@ Item {
             }
 
             /* button to show/hide color picker */
-            TextInput {
+            TextField {
                 id: bibleServerURL
-            }
+                style: TextFieldStyle {
+                        textColor: theme.textColor;
+                        background: Rectangle {
+                            implicitWidth: generalPage.width * 0.5;
+                            border.width: 1
+                        }
+                    }
             //Button {
             //    text: "Default"
-            //    onClicked: bibleServerURL.text = plasmoid.configuration.bibleServerURL.default
+            //    onClicked: bibleServerURL.text = plasmoid.configuration.bibleServerURL;
             //}
         }
+}
 
         /* day selector check box */
         RowLayout {
