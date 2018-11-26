@@ -1,0 +1,11 @@
+metadata.desktop
+icon.svg
+contents/code/functions.js
+contents/config/config.qml
+contents/config/main.xml
+contents/ui/main.qml
+contents/ui/settings.qml
+contents/data/NUTZUNGSBEDINGUNGEN.txt
+contents/data/Losungen Free 2018.xml
+contents/data/Losungen Free 2019.xml
+contents/data/readme.txt
