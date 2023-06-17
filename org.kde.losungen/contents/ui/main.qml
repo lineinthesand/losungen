@@ -167,13 +167,17 @@ Rectangle {
 
             losungsText.text = text;
         } else {
-            
-            losungsText.text = qsTr("Data file ") + losungen.dataFileName 
-                             + qsTr(" not found. You can a get it from ")
-                             + "<a href=\"http://www.losungen.de/download/\">http://www.losungen.de/download/</a>. "
-                             + qsTr("Download the Losungen XML zip, unzip the contained xml file to the installation directory's data folder, e.g.: ")
-                             + "~/.local/share/plasma/plasmoids/org.kde.losungen/contents/data<br/>"
-                             + qsTr("Note that you might need to remove the widget and re-add it, or log out and in again for the new file to be recognized.");
+            var year = new Date().getFullYear();
+            var xmlZipFile = "Losung_" + year + "_XML.zip";
+            var downloadUrl = "https://www.losungen.de/digital/daten/";
+            var fileDownloadUrl = "https://www.losungen.de/fileadmin/media-losungen/download/";
+            var dataFileLocation = "~/.local/share/plasma/plasmoids/org.kde.losungen/contents/data/";
+            var message = qsTr(  "Data file \"%1\" not found. You can a get it from <a href=\"%2\">%2</a>. "
+                               + "Download the <a href=\"%3\">Losungen XML zip</a>, unzip the contained "
+                               + "xml file to the installation directory's data folder, e.g.: \"%4\".<br/>"
+                               + "Note that you might need to remove the widget and re-add it, or log "
+                               + "out and in again for the new file to be recognized.");
+            losungsText.text = message.arg(losungen.dataFileName).arg(downloadUrl).arg(fileDownloadUrl + xmlZipFile).arg(dataFileLocation);
         }
     }
 
