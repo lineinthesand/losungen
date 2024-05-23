@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "thomas.mitterfellner@gmail.com",
+                "Name": "Thomas Mitterfellner"
+            }
+        ],
+        "Category": "Utility",
+        "Description": "Biblische Losungen für jeden Tag",
+        "Icon": "losungen",
+        "Id": "org.kde.losungen6",
+        "Name": "Die Losungen",
+        "Version": "0.6",
+        "Website": ""
+    },
+    "KPackageStructure": "Plasma/Applet",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

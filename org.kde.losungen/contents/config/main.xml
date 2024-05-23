@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+    <kcfgfile name="" />
+
+    <group name="General">
+        <!-- font for the text -->
+        <entry name="textFont" type="String">
+          <default></default>
+        </entry>
+
+        <!-- color for the text -->
+        <entry name="textColor" type="String">
+          <default></default>
+        </entry>
+
+        <!-- color1 for the background gradient -->
+        <entry name="backgroundColor1" type="String">
+          <default></default>
+        </entry>
+        <!-- color2 for the background gradient -->
+        <entry name="backgroundColor2" type="String">
+          <default></default>
+        </entry>
+
+        <entry name="showDaySelector" type="Bool">
+          <default>true</default>
+        </entry>
+        <entry name="showWidgetBorder" type="Bool">
+          <default>true</default>
+        </entry>
+        <entry name="bibleServerURL" type="String">
+          <default>https://www.bibleserver.com/text/LUT/</default>
+        </entry>
+    </group>
+</kcfg>
